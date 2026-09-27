@@ -20,20 +20,19 @@ class _CredAnimationState extends State<CredAnimation>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(milliseconds: 2000),
     )..repeat();
 
-    _slideAnimation = Tween<double>(begin: 1, end: -0.4).animate(_controller);
+    _slideAnimation = Tween<double>(begin: 1, end: -0.6).animate(_controller);
 
     _slideAnimation.addListener(() {
       gradValueOne = _slideAnimation.value;
       if (_slideAnimation.value < 0) {
         gradValueOne = 0.0;
-        gradValueTwo = _slideAnimation.value + 0.4;
+        gradValueTwo = _slideAnimation.value + 0.6;
         gradValueThree = gradValueTwo / 2;
-      }
-      else if (gradValueOne < 0.6) {
-        gradValueTwo = gradValueOne + 0.4;
+      } else if (gradValueOne < 0.4) {
+        gradValueTwo = gradValueOne + 0.6;
         gradValueThree = (gradValueOne + gradValueTwo) / 2;
       } else {
         gradValueTwo = 1.0;
